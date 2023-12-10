@@ -23,7 +23,7 @@
 !/tmp/pids/.keep
 
 # Ignore DB files
-/db/*.sqlite3
+/db/*.sqlite3*
 
 # Ignore storage (uploaded files in development and any SQLite databases).
 /storage/*
