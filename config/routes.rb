@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   #
   root 'static#home'
   get 'past_events', to: 'static#past_events'
+  get 'chat', to: 'static#chat'
 end
