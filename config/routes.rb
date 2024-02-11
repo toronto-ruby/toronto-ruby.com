@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   # root "posts#index"
   #
   root 'static#home'
-  get 'past_events', to: 'static#past_events'
+  get 'past-events', to: 'static#past'
+  get 'past_events', to: redirect('/past-events')
   get 'chat', to: 'static#chat'
   get 'about', to: 'static#about'
 end
