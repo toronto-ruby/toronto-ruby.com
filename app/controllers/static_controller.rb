@@ -4,4 +4,6 @@ class StaticController < ApplicationController
   def past_events; end
 
   def chat; end
+
+  def about; end
 end
