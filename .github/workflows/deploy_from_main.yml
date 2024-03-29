@@ -21,3 +21,7 @@ jobs:
           branch: main
           git_remote_url: ${{ secrets.GIT_REMOTE_URL }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Deploy Notify
+        uses: honeybadger-io/github-notify-deploy-action@v1
+        with:
+          api_key: ${{ secrets.HONEYBADGER_API_KEY }}
