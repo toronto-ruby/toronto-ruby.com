@@ -10,8 +10,8 @@
     <div class="text-center flex flex-col gap-3">
       <%# For an upcoming event, make a "past_event" and use the partial here %>
       <%# Otherwise, use the placeholder partial %>
-      <%= render 'event_placeholder' %>
-      <%# render 'static/past_events/2024_apr3' %>
+      <%#=  render 'event_placeholder' %>
+      <%= render 'static/past_events/2024_may22' %>
 
       <div class="mx-auto w-4/5 md:w-2/3">
         <%= render 'newsletter_form' %>
@@ -20,9 +20,11 @@
     <%= render 'supporting_companies' %>
   </div>
 </main>
+
 <% content_for :page_title do %>
 Home
 <% end %>
+
 <% content_for :page_description do %>
 Toronto Ruby is about building a community for Ruby users in the GTA and providing a positive space for everyone to connect, learn and grow. We're looking forward to seeing you!
 <% end %>
