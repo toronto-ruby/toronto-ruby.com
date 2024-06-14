@@ -18,7 +18,7 @@ events = [
     presentation: "Integer#even?\nGoing stupidly deep on pointless performance questions, but hopefully learning something fun along the way",
     presenter: 'Matt Eagar',
     sponsor: 'Switch Growth',
-    sponsor_logo: 'sponsors/switch.png',
+    sponsor_logo: 'switch.png',
     sponsor_link: 'https://switchgrowth.com/',
     start_at: ActiveSupport::TimeZone[zone].parse('November 23, 2023 18:00 ET')
   },
@@ -30,7 +30,7 @@ events = [
     presentation: 'Rails and the Ruby Garbage Collector: How to Speed Up Your Rails App',
     presenter: 'Peter Zhu, Senior Developer at Shopify',
     sponsor: 'Loop Financial',
-    sponsor_logo: 'sponsors/loop.png',
+    sponsor_logo: 'loop.png',
     sponsor_link: 'https://bankonloop.com/',
     start_at: ActiveSupport::TimeZone[zone].parse('January 24, 2024 18:00 ET')
   },
@@ -42,7 +42,7 @@ events = [
     presentation: 'All About the Ruby LSP',
     presenter: 'Vinicius Stock, Staff Developer at Shopify',
     sponsor: 'Switch Growth',
-    sponsor_logo: 'sponsors/switch.png',
+    sponsor_logo: 'switch.png',
     sponsor_link: 'https://switchgrowth.com/',
     start_at: ActiveSupport::TimeZone[zone].parse('February 29, 2024 18:00 ET')
 
@@ -55,7 +55,7 @@ events = [
     presentation: 'Using Rails introspection to supercharge your editor',
     presenter: 'Andy Waite, Senior Developer at Shopify',
     sponsor: 'Financeit',
-    sponsor_logo: 'sponsors/financeit.png',
+    sponsor_logo: 'financeit.png',
     sponsor_link: 'https://www.financeit.io/',
     start_at: ActiveSupport::TimeZone[zone].parse('April 3, 2024 18:00 ET')
   },
@@ -67,7 +67,7 @@ events = [
     presentation: 'Concurrency in Ruby',
     presenter: 'Raj Kumart, Director of Software Engineering at Stealth',
     sponsor: 'Switch Growth',
-    sponsor_logo: 'sponsors/switch.png',
+    sponsor_logo: 'switch.png',
     sponsor_link: 'https://switchgrowth.com/',
     start_at: ActiveSupport::TimeZone[zone].parse('May 22, 2024 18:00 ET')
   },
@@ -79,7 +79,7 @@ events = [
     presentation: 'Creating A Dev Container Ecosystem For Rails 8',
     presenter: 'Andrew Novoselac, Senior Software Developer at Shopify',
     sponsor: 'Switch Growth',
-    sponsor_logo: 'sponsors/switch.png',
+    sponsor_logo: 'switch.png',
     sponsor_link: 'https://switchgrowth.com/',
     start_at: ActiveSupport::TimeZone[zone].parse('June 20, 2024 18:00 ET')
   }
