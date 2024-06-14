@@ -13,13 +13,4 @@ class Event < ApplicationRecord
   def self.statuses_for_select
     statuses.map { |k, _v| [k.titleize, k] }
   end
-
-  def self.status_selected(status)
-    statuses = {
-      '0' => 'draft',
-      '1' => 'published'
-    }
-
-    statuses[status.to_s]
-  end
 end

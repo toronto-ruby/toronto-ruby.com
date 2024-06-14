@@ -15,6 +15,7 @@ module Admin
     # POST /events or /events.json
     def create
       @event = Event.new(event_params)
+      @event.start_at = ActiveSupport::TimeZone.new('Eastern Time (US & Canada)').local_to_utc(@event.start_at)
 
       respond_to do |format|
         if @event.save
@@ -29,8 +30,11 @@ module Admin
 
     # PATCH/PUT /events/1 or /events/1.json
     def update
+      @event.assign_attributes(event_params)
+      @event.start_at = ActiveSupport::TimeZone.new('Eastern Time (US & Canada)').local_to_utc(@event.start_at)
+
       respond_to do |format|
-        if @event.update(event_params)
+        if @event.save
           format.html { redirect_to root_path, notice: 'Event was successfully updated.' }
           format.json { render :show, status: :ok, location: @event }
         else
