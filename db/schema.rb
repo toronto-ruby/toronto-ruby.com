@@ -10,23 +10,5 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_13_220002) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.string "rsvp_link"
-    t.text "location"
-    t.text "presentation"
-    t.text "presenter"
-    t.string "sponsor"
-    t.string "sponsor_link"
-    t.string "sponsor_logo"
-    t.integer "status"
-    t.datetime "start_at", precision: nil
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.1].define(version: 0) do
 end
