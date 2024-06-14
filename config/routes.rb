@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       get 'past', to: 'events#past'
       get 'all', to: 'events#all'
+      get 'next', to: 'events#next'
     end
   end
 
