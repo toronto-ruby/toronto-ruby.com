@@ -45,7 +45,7 @@
     <h3>Sponsor</h3>
     <div class="flex justify-center items-center">
       <%= link_to event.sponsor_link do %>
-        <%= image_tag "sponsors/switch.png", class: 'max-h-20' %>
+        <%= image_tag "sponsors/#{event.sponsor_logo}", class: 'max-h-20' %>
       <% end %>
     </div>
   </div>
