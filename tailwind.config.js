@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     './app/views/**/*.html.erb',
@@ -7,9 +9,15 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'beige': '#fff8ef',
-      'ruby': '#d64045',
-      'coffee': '#34312d'
+      beige: '#fff8ef',
+      ruby: '#d64045',
+      coffee: '#34312d',
+      red: colors.red,
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+      gray: colors.gray,
     }
   },
   plugins: [
