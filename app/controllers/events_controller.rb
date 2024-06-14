@@ -13,4 +13,9 @@ class EventsController < ApplicationController
     @events = Event.past
     render :index
   end
+
+  def next
+    @events = Event.upcoming.first
+    render :index
+  end
 end
