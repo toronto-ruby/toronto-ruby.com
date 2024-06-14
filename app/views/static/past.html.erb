@@ -1,0 +1,22 @@
+<main class="text-center p-3 max-w-screen-xl md:max-w-screen-md">
+  <div class="flex flex-col gap-3">
+    <div class="text-center">
+      <h1>
+        Our Past Events
+      </h1>
+    </div>
+
+    <div class="grid gap-3 group is-past">
+      <%= render 'static/past_events/2024_apr3' %>
+      <%= render 'static/past_events/2024_feb29' %>
+      <%= render 'static/past_events/2024_jan24' %>
+      <%= render 'static/past_events/nov23' %>
+    </div>
+  </div>
+</main>
+<% content_for :page_title do %>
+Past events
+<% end %>
+<% content_for :page_description do %>
+A listing of our past events.
+<% end %>
