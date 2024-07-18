@@ -29,7 +29,7 @@
     <%= form.label :sponsor_logo %>
     <%= form.text_field :sponsor_logo %>
     <%= form.label :start_at %>
-    <%= form.datetime_field :start_at, value: event.start_at.in_time_zone("Eastern Time (US & Canada)") %>
+    <%= form.datetime_field :start_at, value: event&.start_at&.in_time_zone("Eastern Time (US & Canada)").presence || Time.zone.now.in_time_zone("Eastern Time (US & Canada)") %>
     <%= form.label :status %>
     <%= form.select :status, options_for_select(Event.statuses_for_select, event.status) %>
     <%= form.submit %>
