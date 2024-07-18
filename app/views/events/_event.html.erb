@@ -1,16 +1,16 @@
 <div id="<%= dom_id event %>" class="p-3 border rounded border-solid border-black">
   <% future = Time.zone.now < event.start_at %>
   <div class="md:flex text-left">
-    <div class="w-full md:w-1/2 my-8">
+    <div class="w-full md:w-1/2 my-8 pr-1">
       <h2 class="mb-2"><%= event.name %></h2>
-      <p>
-        <%= event.start_time %><br />
+      <div class="flex flex-col gap-3">
+        <p class="mb-2"><%= event.start_time %></p>
         <%= simple_format(event.location) %>
-      </p>
-      <p>Pizza and drinks provided.</p>
+        <p>Pizza and drinks provided by our sponsor.</p>
+      </div>
     </div>
 
-    <div class="w-full md:w-1/2 my-8">
+    <div class="w-full md:w-1/2 my-8 pl-1">
       <h2 class="mb-2">Agenda</h2>
 
       <p class="mb-0"><em>6pm</em></p>
