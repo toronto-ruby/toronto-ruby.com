@@ -1,12 +1,21 @@
 class EventsController < ApplicationController
-  # GET /events or /events.json
+  # GET /events
   def index
     @events = Event.upcoming
   end
 
+  # GET /events/all or /events/all.ics
   def all
     @events = Event.all
-    render :index
+
+    respond_to do |format|
+      format.html { render :index }
+      format.ics { render plain: Calendar.new(@events).to_ical}
+    end
+  end
+
+  def show
+    @event = Event.find(params[:id])
   end
 
   def past

@@ -97,6 +97,9 @@ GEM
     honeybadger (5.11.2)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
+    icalendar (2.10.2)
+      ice_cube (~> 0.16)
+    ice_cube (0.17.0)
     io-console (0.7.2)
     irb (1.13.1)
       rdoc (>= 4.0.0)
@@ -130,6 +133,8 @@ GEM
       net-protocol
     nio4r (2.7.3)
     nokogiri (1.16.6-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.6-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
@@ -216,6 +221,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-23
+  x86_64-darwin-22
   x86_64-linux
 
 DEPENDENCIES
@@ -223,6 +229,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   honeybadger (~> 5.6)
+  icalendar (~> 2.10)
   jbuilder
   jsbundling-rails
   pg

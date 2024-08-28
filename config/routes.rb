@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :events, only: [:index] do
+  resources :events, only: [:index, :show] do
     collection do
       get 'past', to: 'events#past'
       get 'all', to: 'events#all'

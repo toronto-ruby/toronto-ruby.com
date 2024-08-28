@@ -1,0 +1,5 @@
+<%= content_for :event_content do %>
+  <%= render partial: "event", locals: { event: @event } %>
+<% end %>
+
+<%= render partial: "events/layout" %>
