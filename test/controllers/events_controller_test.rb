@@ -2,6 +2,7 @@ require "test_helper"
 
 class EventsControllerTest < ActionController::TestCase
   def setup
+    Event.destroy_all
     begining = Date.parse("2024-01-01").beginning_of_year
     dates = 12.times.map { |i| begining + i.months + rand(1..10).days }
     @events = dates.map { |date| Event.create!(start_at: date, name: "Toronto.rb #{date.strftime("%B %Y")}", location: "Toronto, Canada", presentation: "Presentation #{date}") }
