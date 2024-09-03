@@ -27,6 +27,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_220002) do
     t.datetime "start_at", precision: nil
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.virtual "slug", type: :string, null: false, as: "lower(regexp_replace(regexp_replace((name)::text, ' +'::text, '-'::text, 'g'::text), '[^a-zA-Z0-9-]'::text, ''::text, 'g'::text))", stored: true
+    t.index ["slug"], name: "index_events_on_slug", unique: true
   end
 
 end
