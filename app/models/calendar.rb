@@ -1,6 +1,8 @@
 require "icalendar"
 
 class Calendar
+  include Rails.application.routes.url_helpers
+
   def initialize(events)
     @events = events
   end
@@ -16,10 +18,38 @@ class Calendar
       calendar.event do |e|
         e.dtstart     = ical_time(event.start_at)
         e.dtend       = ical_time(event.start_at + 2.hours)
-        e.summary     = event.name
-        e.description = event.presentation
-        e.location    = "Toronto, Canada" # TODO: Use event.location, but it's too long for the calendar with all the details and instructions
-        e.url         = event.rsvp_link || "https://toronto-ruby.com/events/#{event.id}"
+        e.summary     = "Toronto Ruby - #{event.name}"
+        e.location    = event.city
+        e.url         = event.rsvp_link || event_url(event)
+
+        sponsor = event.sponsor ? <<~SPONSOR : nil
+          Sponsor:
+          #{event.sponsor} (#{event.sponsor_link})
+        SPONSOR
+
+        rsvp_link = event.rsvp_link ? <<~RSVP : nil
+          RSVP:
+          #{event.rsvp_link}
+        RSVP
+
+        e.description = <<~DESCRIPTION
+          Toronto Ruby - #{event.name}
+
+          Location:
+          #{event.location}
+
+          Presenter:
+          #{event.presenter}
+
+          Presentation:
+          #{event.presentation}
+
+          Event-Site:
+          #{event_url(event)}
+
+          #{rsvp_link}
+          #{sponsor}
+        DESCRIPTION
       end
     end
 
