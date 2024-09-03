@@ -6,7 +6,7 @@ class EventsController < ApplicationController
 
   # GET /events/all or /events/all.ics
   def all
-    @events = Event.all
+    @events = Event.published
 
     respond_to do |format|
       format.html { render :index }
