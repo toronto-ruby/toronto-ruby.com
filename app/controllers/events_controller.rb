@@ -10,7 +10,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html { render :index }
-      format.ics { render plain: Calendar.new(@events).to_ical }
+      format.ics { render plain: Calendar.new(@events.order(start_at: :asc)).to_ical }
     end
   end
 
