@@ -1,0 +1,32 @@
+<main class="text-center p-3 max-w-screen-xl md:max-w-screen-md">
+  <div class="flex flex-col gap-6">
+    <div class="text-center">
+      <h1 class="mb-6">
+        Icalendar Integration
+      </h1>
+
+      <p class="mb-4">
+        Add the Toronto Ruby events as a calendar subscription to your own calendar.
+      </p>
+
+      <p class="mb-4">
+        Copy the following URL and import the calendar:
+      </p>
+
+      <div data-controller="clipboard" data-action="clipboard#copy" data-clipboard-success-content-value="✅" class="mt-1 inline-flex rounded-md">
+        <input data-action="clipboard#copy" type="text" value="<%= all_events_url(:ics) %>" data-clipboard-target="source" readonly class="py-3 px-6 flex-1 text-sm rounded-l-md border border-gray-300 bg-gray-50 w-72">
+        <button type="button" data-action="clipboard#copy" data-clipboard-target="button" class="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+          💾
+        </button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<% content_for :page_title do %>
+Calendar
+<% end %>
+
+<% content_for :page_description do %>
+Add the Toronto Ruby events as a calendar subscription to your own calendar.
+<% end %>

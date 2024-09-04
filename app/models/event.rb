@@ -13,4 +13,8 @@ class Event < ApplicationRecord
   def self.statuses_for_select
     statuses.map { |k, _v| [k.titleize, k] }
   end
+
+  def to_param
+    slug
+  end
 end

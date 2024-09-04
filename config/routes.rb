@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :events, only: [:index] do
+  resources :events, only: [:index, :show], param: :slug do
     collection do
       get 'past', to: 'events#past'
-      get 'all', to: 'events#all'
+      get 'all', to: 'events#all', as: :all
       get 'next', to: 'events#next'
     end
   end
@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get 'past_events', to: redirect('/events/past')
   get 'chat', to: 'static#chat'
   get 'about', to: 'static#about'
+  get 'calendar', to: 'static#calendar'
 end
