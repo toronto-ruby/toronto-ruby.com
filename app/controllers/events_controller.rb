@@ -15,7 +15,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(slug: params[:slug])
+    @event = Event.find_by!(slug: params[:slug])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to all_events_path, error: "Event not found"
   end
 
   def past
