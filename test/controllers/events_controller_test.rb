@@ -41,6 +41,6 @@ class EventsControllerTest < ActionController::TestCase
     get :show, params: { slug: 'nonexistent-event' }
 
     assert_response :found
-    assert_redirected_to past_events_path
+    assert_redirected_to all_events_path
   end
 end
