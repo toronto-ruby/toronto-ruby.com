@@ -42,5 +42,8 @@ jobs:
         env:
           RAILS_ENV: test
 
+      - name: Precompile Assets
+        run: bundle exec rails assets:precompile
+
       - name: Run tests
         run: bundle exec rails test:all
