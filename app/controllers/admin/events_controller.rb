@@ -1,6 +1,8 @@
 module Admin
   class EventsController < BaseController
-    before_action :set_event, only: %i[edit update destroy]
+    before_action :set_event, only: %i[show edit update destroy]
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
     def index
       @events = Event.all
     end
@@ -11,6 +13,9 @@ module Admin
 
     # GET /events/1/edit
     def edit; end
+
+    # GET /events/1
+    def show; end
 
     # POST /events or /events.json
     def create
@@ -58,13 +63,17 @@ module Admin
 
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find_by(slug: params[:id])
+      @event = Event.find_by!(slug: params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def event_params
       params.require(:event).permit(:name, :rsvp_link, :location, :presentation, :presenter, :sponsor, :sponsor_link,
                                     :sponsor_logo, :start_at, :status)
+    end
+
+    def record_not_found
+      redirect_to admin_events_path, warning: 'Event not found'
     end
   end
 end
