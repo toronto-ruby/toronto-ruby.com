@@ -23,7 +23,7 @@
         <div class="w-4/5 mt-2">
           <p>Presentation:</p>
           <p class="mb-0"><strong><%= event.presentation %></strong></p>
-          <p>by <%= event.presenter.html_safe %></p>
+          <p>by <%= event.presenter&.html_safe %></p>
         </div>
       </div>
 
@@ -45,7 +45,11 @@
     <h3>Sponsor</h3>
     <div class="flex justify-center items-center">
       <%= link_to event.sponsor_link do %>
-        <%= image_tag "sponsors/#{event.sponsor_logo}", class: 'max-h-20' %>
+        <% if event.sponsor_logo %>
+          <%= image_tag "sponsors/#{event.sponsor_logo}", class: 'max-h-20' %>
+        <% else %>
+          <%= event.sponsor.titleize %>
+        <% end %>
       <% end %>
     </div>
   </div>
