@@ -33,10 +33,5 @@ jobs:
         env:
           RAILS_ENV: test
 
-      - name: Prepare for testing
-        run: bundle exec rails test:prepare
-        env:
-          RAILS_ENV: test
-
       - name: Run tests
-        run: bundle exec rails test
+        run: bundle exec rails test:all
