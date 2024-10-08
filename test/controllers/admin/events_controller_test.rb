@@ -31,7 +31,7 @@ class Admin::EventsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should show draft events' do
+  test 'index should show draft events' do
     Event.update_all(status: :draft)
 
     get admin_events_path,
@@ -45,6 +45,19 @@ class Admin::EventsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_equal 'text/html; charset=utf-8', response.content_type
     assert response.body.include?(Event.last.name)
+  end
+
+  test 'should show a single event' do
+    get admin_event_path(Event.first.slug),
+        headers: {
+          Authorization:
+            ActionController::HttpAuthentication::Basic.encode_credentials(
+              'admin', 'admin'
+            )
+        }
+
+    assert_response :ok
+    assert response.body.include?(Event.first.name)
   end
 
   test 'should redirect to events page if event is not found' do

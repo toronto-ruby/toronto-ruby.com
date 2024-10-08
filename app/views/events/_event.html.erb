@@ -45,7 +45,7 @@
     <h3>Sponsor</h3>
     <div class="flex justify-center items-center">
       <%= link_to event.sponsor_link do %>
-        <% if event.sponsor_logo %>
+        <% if event.sponsor_logo.present? %>
           <%= image_tag "sponsors/#{event.sponsor_logo}", class: 'max-h-20' %>
         <% else %>
           <%= event.sponsor.titleize %>

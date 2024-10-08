@@ -1,9 +1,5 @@
-<% content_for :page_title do %>
- <%= @event.name %>
-<% end %>
-
-
 <%= content_for :event_content do %>
+  <%= link_to "Edit this event", edit_admin_event_path(@event) %>
   <%= render partial: "events/event", locals: { event: @event } %>
 <% end %>
 
