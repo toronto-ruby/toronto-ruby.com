@@ -4,7 +4,7 @@ module Admin
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def index
-      @events = Event.all
+      @events = Event.all.order(created_at: :desc)
     end
 
     def new
