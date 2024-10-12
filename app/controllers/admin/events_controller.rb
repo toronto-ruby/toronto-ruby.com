@@ -4,7 +4,7 @@ module Admin
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
     def index
-      @events = Event.all.order(created_at: :desc)
+      @events = Event.with_all_rich_text.all.order(created_at: :desc)
     end
 
     def new
@@ -63,7 +63,7 @@ module Admin
 
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find_by!(slug: params[:id])
+      @event = Event.with_all_rich_text.find_by!(slug: params[:id])
     end
 
     # Only allow a list of trusted parameters through.

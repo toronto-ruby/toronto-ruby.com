@@ -7,3 +7,7 @@
 <div>
   <%= link_to "Back to events", admin_events_path %>
 </div>
+
+<% content_for :page_title do %>
+ Editing <%= @event.name %>
+<% end %>

@@ -4,3 +4,7 @@
 <% end %>
 
 <%= render partial: "layouts/event_layout" %>
+
+<% content_for :page_title do %>
+ <%= @event.name %>
+<% end %>
