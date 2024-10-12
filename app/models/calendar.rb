@@ -1,4 +1,4 @@
-require "icalendar"
+require 'icalendar'
 
 class Calendar
   include Rails.application.routes.url_helpers
@@ -17,7 +17,7 @@ class Calendar
     @events.each do |event|
       calendar.event do |e|
         e.dtstart     = ical_time(event.start_at)
-        e.dtend       = ical_time(event.start_at + 2.hours)
+        e.dtend       = ical_time(event.start_at + 3.hours)
         e.summary     = "Toronto Ruby - #{event.name}"
         e.location    = event.city
         e.url         = event.rsvp_link || event_url(event)
@@ -34,15 +34,10 @@ class Calendar
 
         e.description = <<~DESCRIPTION
           Toronto Ruby - #{event.name}
+          #{event.description.to_plain_text}
 
           Location:
-          #{event.location}
-
-          Presenter:
-          #{event.presenter}
-
-          Presentation:
-          #{event.presentation}
+          #{event.location.to_plain_text}
 
           Event-Site:
           #{event_url(event)}
@@ -63,7 +58,7 @@ class Calendar
   private
 
   def timezone_identifier
-    "America/Toronto"
+    'America/Toronto'
   end
 
   def timezone

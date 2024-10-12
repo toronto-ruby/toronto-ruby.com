@@ -11,7 +11,7 @@ class EventsControllerTest < ActionController::TestCase
         name: "Event #{date.strftime('%B %Y')}",
         location: 'Some Office',
         city: 'Toronto, Canada',
-        presentation: "Presentation #{date}",
+        description: "Presentation #{date}",
         status: :published,
         sponsor: 'Some Sponsor',
         sponsor_link: 'https://example.com'
