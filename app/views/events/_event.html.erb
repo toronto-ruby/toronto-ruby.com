@@ -5,8 +5,8 @@
       <h2 class="mb-2"><%= link_to event.name, event %></h2>
       <div class="flex flex-col gap-3">
         <p class="mb-2"><%= event.start_time %></p>
-        <%= simple_format(event.location) %>
-        <p>Pizza and drinks provided by our sponsor.</p>
+        <%= event.location %>
+        <p>Food and drinks provided by our sponsor.</p>
       </div>
     </div>
 
@@ -21,9 +21,7 @@
       <p class="mb-0"><em>7pm</em></p>
       <div class="ml-4">
         <div class="w-4/5 mt-2">
-          <p>Presentation:</p>
-          <p class="mb-0"><strong><%= event.presentation %></strong></p>
-          <p>by <%= event.presenter&.html_safe %></p>
+          <%= event.description %>
         </div>
       </div>
 
