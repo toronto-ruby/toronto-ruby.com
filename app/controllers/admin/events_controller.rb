@@ -37,7 +37,6 @@ module Admin
     def update
       @event.assign_attributes(event_params)
       @event.start_at = ActiveSupport::TimeZone.new('Eastern Time (US & Canada)').local_to_utc(@event.start_at)
-      binding.irb
 
       respond_to do |format|
         if @event.save
