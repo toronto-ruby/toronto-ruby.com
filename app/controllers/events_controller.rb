@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
   # GET /events
   def index
-    @events = Event.upcoming
+    @events = Event.with_all_rich_text.upcoming
   end
 
   # GET /events/all or /events/all.ics
   def all
-    @events = Event.published
+    @events = Event.with_all_rich_text.published.order(start_at: :desc)
 
     respond_to do |format|
       format.html { render :index }
@@ -15,18 +15,18 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by!(slug: params[:slug])
+    @event = Event.with_all_rich_text.find_by!(slug: params[:slug])
   rescue ActiveRecord::RecordNotFound
-    redirect_to all_events_path, error: "Event not found"
+    redirect_to all_events_path, error: 'Event not found'
   end
 
   def past
-    @events = Event.past
+    @events = Event.with_all_rich_text.past
     render :index
   end
 
   def next
-    @events = Event.upcoming.first
+    @events = Event.with_all_rich_text.upcoming.first
     render :index
   end
 end
