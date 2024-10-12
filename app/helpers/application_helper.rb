@@ -1,9 +1,19 @@
 module ApplicationHelper
   def title
-    "#{content_for(:page_title)} | Toronto Ruby" || 'Toronto Ruby'
+    text = content_for(:page_title)
+    if text.present?
+      "#{text} | Toronto Ruby"
+    else
+      'Toronto Ruby'
+    end
   end
 
   def description
-    content_for(:page_description) || 'Toronto Ruby Meetups'
+    text = content_for(:page_description)
+    if text.present?
+      text
+    else
+      'Toronto Ruby Meetups'
+    end
   end
 end
