@@ -1,10 +1,10 @@
-name: Setup Test Database
-description: Set up the test Database
+name: Set up db and storage config
+description: Set up db and storage configurations.
 
 runs:
   using: "composite"
   steps:
-    - name: Setup PSQL
+    - name: Set up db and storage configuration
       shell: bash
       run: |
         cp config/database.yml.sample config/database.yml
