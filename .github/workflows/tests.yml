@@ -38,9 +38,7 @@ jobs:
           bundler-cache: true
 
       - name: Setup Test Database
-        run: bundle exec rails db:setup
-        env:
-          RAILS_ENV: test
+        uses ./.github/actions/setup-database
 
       - name: Precompile Assets
         run: bundle exec rails assets:precompile

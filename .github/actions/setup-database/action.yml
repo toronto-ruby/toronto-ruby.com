@@ -1,0 +1,13 @@
+name: Setup Test Database
+description: Set up the test Database
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup PSQL
+      shell: bash
+      run: |
+        cp config/database.yml.sample config/database.yml
+        bundle exec RAILS_ENV=test rails db:setup
+
+
