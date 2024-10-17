@@ -8,6 +8,6 @@ runs:
       shell: bash
       run: |
         cp config/database.yml.sample config/database.yml
-        bundle exec RAILS_ENV=test rails db:setup
+        RAILS_ENV=test bundle exec rails db:setup
 
 
