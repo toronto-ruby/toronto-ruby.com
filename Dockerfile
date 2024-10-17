@@ -45,7 +45,7 @@ COPY . .
 
 # Use sample configs
 RUN mv config/database.yml.production config/database.yml 2>/dev/null || true
-RUN mv config/storage.example.yml config/storage.yml 2>/dev/null || true
+RUN mv config/storage.yml.production config/storage.yml 2>/dev/null || true
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
