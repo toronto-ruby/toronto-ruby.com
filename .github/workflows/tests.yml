@@ -38,7 +38,7 @@ jobs:
           bundler-cache: true
 
       - name: Setup Test Database
-        uses ./.github/actions/setup-database
+        uses: ./.github/actions/setup-database
 
       - name: Precompile Assets
         run: bundle exec rails assets:precompile
