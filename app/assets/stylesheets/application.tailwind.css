@@ -14,3 +14,10 @@
   }
 }
 
+.coc a {
+  @apply text-ruby underline;
+}
+
+.coc p {
+  @apply mb-2;
+}
