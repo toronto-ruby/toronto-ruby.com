@@ -6,4 +6,6 @@ class StaticController < ApplicationController
   def chat; end
 
   def about; end
+
+  def coc; end
 end

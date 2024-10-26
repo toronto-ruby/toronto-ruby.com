@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   get 'chat', to: 'static#chat'
   get 'about', to: 'static#about'
   get 'calendar', to: 'static#calendar'
+  get 'code-of-conduct', to: 'static#coc'
 end
