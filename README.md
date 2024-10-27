@@ -3,7 +3,7 @@
 Website, Rails powered!
 
 ### Requirements
-* Ruby 3.2.2
+* Ruby 3.3.5
 * node >= 20
 * PSQL >= 14
 
