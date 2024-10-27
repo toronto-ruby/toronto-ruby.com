@@ -4,7 +4,6 @@ Website, Rails powered!
 
 ### Requirements
 * Ruby 3.2.2
-* yarn 1.22.6
 * node >= 20
 * PSQL >= 14
 
@@ -17,7 +16,7 @@ The database and storage configurations are provided in a `.sample` file, make s
 
 1. Pull/clone the repo
 1. Run `bundle install`
-1. Run `yarn install`
+1. Run `npm install`
 1. Run `cp ./config/database.yml.sample ./config/database.yml`
 1. Run `cp ./config/storage.yml.sample ./config/storage.yml`
 1. Edit the two files above as needed.
