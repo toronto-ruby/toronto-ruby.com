@@ -74,8 +74,7 @@ class Admin::EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'edit form should show all fields for the event' do
-    # This test also tests that the form is keeping up with
-    # our model's attributes.
+    # Also tests the form has all our model's attributes
     get admin_event_path(Event.first.slug),
         headers: {
           Authorization:
