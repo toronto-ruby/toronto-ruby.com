@@ -1,4 +1,7 @@
-<div id="<%= dom_id event %>" class="p-3 border rounded border-solid border-black">
+<div
+  id="<%= dom_id event %>"
+  class="p-3 border rounded border-solid border-black"
+>
   <% future = Time.zone.now < event.start_at %>
   <div class="md:flex text-left">
     <div class="w-full md:w-1/2 my-8 pr-1">
@@ -15,7 +18,7 @@
 
       <p class="mb-0"><em>6pm</em></p>
       <p class="ml-4">
-      Arrive, chat, and get pizza
+        Arrive, chat, and get pizza
       </p>
 
       <p class="mb-0"><em>7pm</em></p>
@@ -27,7 +30,7 @@
 
       <p class="mb-0"><em>remainder of time until 9pm</em></p>
       <p class="ml-4">
-      Networking and drinks
+        Networking and drinks
       </p>
 
     </div>
@@ -40,15 +43,17 @@
         <% end %>
       </div>
     <% end %>
-    <h3>Sponsor</h3>
-    <div class="flex justify-center items-center">
-      <%= link_to event.sponsor_link do %>
-        <% if event.sponsor_logo.present? %>
-          <%= image_tag "sponsors/#{event.sponsor_logo}", class: 'max-h-20' %>
-        <% else %>
-          <%= event.sponsor.titleize %>
+    <% if event.sponsor %>
+      <h3 Sponsor</h3>
+      <div class="flex justify-center items-center">
+        <%= link_to event.sponsor_link do %>
+          <% if event.sponsor_logo.present? %>
+            <%= image_tag "sponsors/#{event.sponsor_logo}", class: "max-h-20" %>
+          <% else %>
+            <%= event.sponsor.titleize %>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
