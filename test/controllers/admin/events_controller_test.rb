@@ -72,4 +72,34 @@ class Admin::EventsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_redirected_to admin_events_path
   end
+
+  test 'edit form should show all fields for the event' do
+    # This test also tests that the form is keeping up with
+    # our model's attributes.
+    get admin_event_path(Event.first.slug),
+        headers: {
+          Authorization:
+            ActionController::HttpAuthentication::Basic.encode_credentials(
+              'admin', 'admin'
+            )
+        }
+
+    # Get all attributes and rich text associations
+    editable = Event.rich_text_association_names.map { |assoc|
+      assoc.to_s.gsub('rich_text', 'event')
+    } + Event.attribute_names.map do |attr|
+      "event_#{attr}"
+    end
+    # Remove meta attributes we don't edit via the form
+    editable -= %w[event_id event_slug event_city event_created_at event_updated_at]
+
+    # Form fields we expect
+    want = %w[event_name event_location event_link event_description event_sponsor event_sponsor_link
+              event_sponsor_logo event_start_at event_status]
+    assert_equal(want.length, editable.length)
+
+    want.each do |attr|
+      css_select "##{attr}"
+    end
+  end
 end
