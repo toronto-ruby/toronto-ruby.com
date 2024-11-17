@@ -3,7 +3,7 @@
 <% end %>
 
 <%= content_for :event_content do %>
-  <%= render partial: "events/event2", locals: { event: @event } %>
+  <%= render partial: "events/event", locals: { event2: @event } %>
 <% end %>
 
 <%= render partial: "layouts/event_layout" %>
