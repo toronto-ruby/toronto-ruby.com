@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
-  resources :events, only: %i[index show], param: :slug do
-    collection do
-      get 'past', to: 'events#past'
-      get 'all', to: 'events#all', as: :all
-      get 'next', to: 'events#next'
-    end
-  end
-
   namespace :admin do
+    root to: redirect('/admin/events')
     resources :events
   end
 
@@ -17,9 +10,6 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'up' => 'rails/health#show', as: :rails_health_check
 
-  # Defines the root path route ("/")
-  # root "posts#index"
-  #
   root 'events#index'
   get 'past-events', to: redirect('/events/past')
   get 'past_events', to: redirect('/events/past')
@@ -27,4 +17,12 @@ Rails.application.routes.draw do
   get 'about', to: 'static#about'
   get 'calendar', to: 'static#calendar'
   get 'code-of-conduct', to: 'static#coc'
+
+  resources :events, only: %i[index show], param: :slug do
+    collection do
+      get 'past', to: 'events#past'
+      get 'all', to: 'events#all', as: :all
+      get 'next', to: 'events#next'
+    end
+  end
 end
