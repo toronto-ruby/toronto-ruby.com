@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
-  resources :events, only: %i[index show], param: :slug do
-    collection do
-      get 'past', to: 'events#past'
-      get 'all', to: 'events#all', as: :all
-      get 'next', to: 'events#next'
-    end
-  end
-
   namespace :admin do
+    root to: redirect('/admin/events')
     resources :events
   end
 
@@ -27,4 +20,12 @@ Rails.application.routes.draw do
   get 'about', to: 'static#about'
   get 'calendar', to: 'static#calendar'
   get 'code-of-conduct', to: 'static#coc'
+
+  resources :events, only: %i[index show], param: :slug do
+    collection do
+      get 'past', to: 'events#past'
+      get 'all', to: 'events#all', as: :all
+      get 'next', to: 'events#next'
+    end
+  end
 end
