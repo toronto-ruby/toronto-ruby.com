@@ -6,6 +6,13 @@ on:
     branches:
       - main
 
+# github.workflow = Workflow name
+# github.event.pull_request.number = PR number
+# github.ref = if trigger is a push, use the branch name instead
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-22.04
