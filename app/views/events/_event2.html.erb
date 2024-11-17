@@ -1,0 +1,45 @@
+<div
+  id="<%= dom_id event2 %>"
+  class="p-3 border rounded border-solid border-black"
+>
+  <% future = Time.zone.now < event2.start_at %>
+  <div class="md:flex text-left">
+    <div class="w-full md:w-1/2 my-8 pr-1">
+      <h2 class="mb-2"><%= link_to event2.name, event2 %></h2>
+      <div class="flex flex-col gap-3">
+        <p class="mb-2"><%= event2.start_time %></p>
+        <%= event2.location %>
+      </div>
+    </div>
+
+    <div class="w-full md:w-1/2 my-8 pl-1">
+      <h2 class="mb-2">Agenda</h2>
+      <div class="ml-4">
+        <div class="w-4/5 mt-2">
+          <%= event2.description %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mx-auto text-center">
+    <% if future %>
+      <div class="mb-6">
+        <%= link_to event2.rsvp_link, class: "rounded-full bg-ruby px-4 py-2.5 font-semibold text-white/100 shadow-sm ring-1 ring-inset ring-ruby hover:bg-red-400" do %>
+          Join the event
+        <% end %>
+      </div>
+    <% end %>
+    <% if event2.sponsor %>
+      <h3 Sponsor</h3>
+      <div class="flex justify-center items-center">
+        <%= link_to event2.sponsor_link do %>
+          <% if event2.sponsor_logo.present? %>
+            <%= image_tag "sponsors/#{event2.sponsor_logo}", class: "max-h-20" %>
+          <% else %>
+            <%= event2.sponsor.titleize %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
