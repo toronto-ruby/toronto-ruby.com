@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
+
+import NewTabLinksController from "./new_tab_links_controller"
+application.register("new-tab-links", NewTabLinksController)
