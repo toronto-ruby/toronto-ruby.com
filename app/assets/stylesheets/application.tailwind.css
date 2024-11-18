@@ -21,3 +21,13 @@
 .coc p {
   @apply mb-2;
 }
+
+a.external-link::after {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.25em;
+  background-size: 1em;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0ic2l6ZS00Ij4KICA8cGF0aCBkPSJNNi4yMiA4LjcyYS43NS43NSAwIDAgMCAxLjA2IDEuMDZsNS4yMi01LjIydjEuNjlhLjc1Ljc1IDAgMCAwIDEuNSAwdi0zLjVhLjc1Ljc1IDAgMCAwLS43NS0uNzVoLTMuNWEuNzUuNzUgMCAwIDAgMCAxLjVoMS42OUw2LjIyIDguNzJaIiAvPgogIDxwYXRoIGQ9Ik0zLjUgNi43NWMwLS42OS41Ni0xLjI1IDEuMjUtMS4yNUg3QS43NS43NSAwIDAgMCA3IDRINC43NUEyLjc1IDIuNzUgMCAwIDAgMiA2Ljc1djQuNUEyLjc1IDIuNzUgMCAwIDAgNC43NSAxNGg0LjVBMi43NSAyLjc1IDAgMCAwIDEyIDExLjI1VjlhLjc1Ljc1IDAgMCAwLTEuNSAwdjIuMjVjMCAuNjktLjU2IDEuMjUtMS4yNSAxLjI1aC00LjVjLS42OSAwLTEuMjUtLjU2LTEuMjUtMS4yNXYtNC41WiIgLz4KPC9zdmc+Cg==");
+}
