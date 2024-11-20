@@ -101,4 +101,33 @@ class Admin::EventsControllerTest < ActionDispatch::IntegrationTest
       css_select "##{attr}"
     end
   end
+
+  test 'should create the correct event details' do
+    post admin_events_path,
+         params: {
+           'event' => {
+             'name' => "Toronto Ruby's One Year Anniversary",
+             'location' => '<div>Some Office</div>',
+             'rsvp_link' => 'https://test.com',
+             'description' => '<div>DESCRIPTION</div>',
+             'sponsor' => '',
+             'sponsor_link' => '',
+             'sponsor_logo' => '',
+             'start_at' => '2024-11-25T19:30',
+             'status' => 'published'
+           }
+         },
+         headers: {
+           Authorization:
+             ActionController::HttpAuthentication::Basic.encode_credentials(
+               'admin', 'admin'
+             )
+         }
+
+    got = Event.last
+    want = {
+      start_at: DateTime.parse('2024-11-25T19:30-05:00')
+    }
+    assert_equal(want[:start_at].utc, got.start_at)
+  end
 end
