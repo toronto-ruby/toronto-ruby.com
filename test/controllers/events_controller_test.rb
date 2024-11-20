@@ -4,7 +4,7 @@ class EventsControllerTest < ActionController::TestCase
   def setup
     Event.destroy_all
     begining = Date.parse('2024-01-01').beginning_of_year
-    dates = 12.times.map { |i| begining + i.months }
+    dates = 12.times.map { |i| begining.to_datetime.change(hour: 19, zone: 'America/Toronto') + i.months }
     @events = dates.map do |date|
       Event.create!(
         start_at: date,

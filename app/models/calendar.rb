@@ -65,11 +65,7 @@ class Calendar
     @timezone ||= TZInfo::Timezone.get(timezone_identifier)
   end
 
-  def ical_timezone
-    timezone.ical_timezone(timezone.now)
-  end
-
   def ical_time(datetime)
-    Icalendar::Values::DateTime.new(datetime, tzid: timezone_identifier)
+    Icalendar::Values::DateTime.new(datetime.in_time_zone(timezone_identifier), tzid: timezone_identifier)
   end
 end
