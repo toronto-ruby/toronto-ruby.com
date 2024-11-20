@@ -3,7 +3,7 @@ require 'test_helper'
 class CalendarTest < ActiveSupport::TestCase
   def setup
     @event = Event.create(
-      'name' => "Toronto Ruby's One Year Anniversary",
+      'name' => 'Witty Event Name',
       'location' => '<div>Some Office</div>',
       'rsvp_link' => 'https://test.com',
       'description' => '<div>DESCRIPTION</div>',
@@ -18,7 +18,8 @@ class CalendarTest < ActiveSupport::TestCase
 
   test 'ical_time produces the correct time' do
     want = DateTime.parse('2024-11-25T19:30-05:00').to_i
-    got = @calendar.send(:ical_time, @event.start_at)
-    assert_same(want, got.to_i)
+    # Yes, we're testing a private method...
+    got = @calendar.send(:ical_time, @event.start_at).to_i
+    assert_same(want, got)
   end
 end
