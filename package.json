@@ -7,9 +7,9 @@
     "@rails/actiontext": "^7.2.100",
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.16",
-    "esbuild": "^0.19.9",
+    "esbuild": "^0.25.0",
     "postcss": "^8.4.32",
-    "trix": "^2.1.6"
+    "trix": "^2.1.13"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
