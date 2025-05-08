@@ -9,7 +9,7 @@
     "autoprefixer": "^10.4.16",
     "esbuild": "^0.25.0",
     "postcss": "^8.4.32",
-    "trix": "^2.1.13"
+    "trix": "^2.1.15"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets",
