@@ -1,22 +1,53 @@
-<header class="flex flex-col content-center justify-center">
-  <%= image_tag "logo-transparent.png", class: "mx-auto max-w-[16rem] h-auto" %>
-  <nav
-    class="
-      text-center grid grid-cols-2 gap-2 text-ruby sm:flex sm:flex-row
-      sm:justify-center sm:gap-5
-    "
-  >
-    <%= link_to "Home", root_path %>
-    <%= link_to 'https://github.com/toronto-ruby/talks', class: 'external-link flex gap-1 justify-center items-center' do %>
-      Propose a talk
-    <% end %>
-    <%= link_to "About", about_path %>
-    <%= link_to "Code of Conduct", code_of_conduct_path %>
-    <%= link_to "Calendar", calendar_path %>
-    <%= link_to 'https://www.youtube.com/@TorontoRuby', class: 'external-link flex gap-1 justify-center items-center' do %>
-      Youtube
-    <% end %>
-    <%= link_to "Chat", chat_path %>
-    <%= link_to "Past Events", past_events_path %>
-  </nav>
+<header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <%= link_to root_path, class: "flex items-center group" do %>
+          <%= image_tag "logo-transparent.png", class: "h-12 w-auto transition-transform group-hover:scale-105", alt: "Toronto Ruby" %>
+        <% end %>
+      </div>
+      
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <%= link_to "Home", root_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors" %>
+        <%= link_to 'https://github.com/toronto-ruby/talks', class: 'text-gray-700 hover:text-ruby-500 font-medium transition-colors external-link' do %>
+          Propose a talk
+        <% end %>
+        <%= link_to "About", about_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors" %>
+        <%= link_to "Calendar", calendar_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors" %>
+        <%= link_to 'https://www.youtube.com/@TorontoRuby', class: 'text-gray-700 hover:text-ruby-500 font-medium transition-colors external-link' do %>
+          Youtube
+        <% end %>
+        <%= link_to "Chat", chat_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors" %>
+        <%= link_to "Past Events", past_events_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors" %>
+      </nav>
+      
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button type="button" class="text-gray-700 hover:text-ruby-500 p-2" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col space-y-3">
+        <%= link_to "Home", root_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-ruby-50" %>
+        <%= link_to 'https://github.com/toronto-ruby/talks', class: 'text-gray-700 hover:text-ruby-500 font-medium transition-colors external-link px-3 py-2 rounded-lg hover:bg-ruby-50' do %>
+          Propose a talk
+        <% end %>
+        <%= link_to "About", about_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-ruby-50" %>
+        <%= link_to "Calendar", calendar_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-ruby-50" %>
+        <%= link_to 'https://www.youtube.com/@TorontoRuby', class: 'text-gray-700 hover:text-ruby-500 font-medium transition-colors external-link px-3 py-2 rounded-lg hover:bg-ruby-50' do %>
+          Youtube
+        <% end %>
+        <%= link_to "Chat", chat_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-ruby-50" %>
+        <%= link_to "Past Events", past_events_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-ruby-50" %>
+      </div>
+    </div>
+  </div>
 </header>

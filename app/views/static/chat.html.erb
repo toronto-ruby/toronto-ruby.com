@@ -1,19 +1,78 @@
-<main class="text-center p-3 max-w-screen-xl md:max-w-screen-md">
-  <div class="flex flex-col gap-6">
-    <div class="text-center">
-      <h1 class="mb-6">
-        Chat with us on Slack!
-      </h1>
-
-      <p>
-        The <%= link_to "Ruby on Rails Link Slack", "https://rubyonrails.link/", class: 'underline text-ruby' %> has kindly provided us a channel to chat in, come join us in the <span class="font-mono block bg-red-700">#toronto</span> channel!
+<div class="py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="mb-12">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-ruby-100 rounded-full mb-6">
+        <svg class="w-10 h-10 text-ruby-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+        </svg>
+      </div>
+      <h1 class="mb-4">Chat with the Community</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Connect with Ruby developers in Toronto and beyond. Share ideas, ask questions, and build lasting connections.
+      </p>
+    </div>
+    
+    <div class="card p-8 mb-8">
+      <div class="flex items-center justify-center mb-6">
+        <div class="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg px-4 py-2 font-mono text-lg">
+          #toronto
+        </div>
+      </div>
+      
+      <p class="text-gray-600 mb-6">
+        The <%= link_to "Ruby on Rails Link Slack", "https://rubyonrails.link/", class: 'text-ruby-500 hover:text-ruby-600 font-medium' %> 
+        community has kindly provided us with a dedicated channel. Join thousands of Ruby developers from around the world!
+      </p>
+      
+      <div class="border-t border-gray-100 pt-6">
+        <h3 class="text-lg font-semibold mb-3">What you'll find:</h3>
+        <ul class="text-left max-w-md mx-auto space-y-2 text-gray-600">
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            Local meetup announcements and discussions
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            Job opportunities in the Toronto tech scene
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            Technical help and code reviews
+          </li>
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            Casual conversations with fellow Rubyists
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div>
+      <%= link_to "https://rubyonrails.link/", class: "btn-primary", target: "_blank", rel: "noopener" do %>
+        Join the Slack Community
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+        </svg>
+      <% end %>
+      <p class="mt-4 text-sm text-gray-600">
+        After joining, look for the <span class="font-mono bg-gray-100 px-2 py-1 rounded">#toronto</span> channel
       </p>
     </div>
   </div>
-</main>
+</div>
+
 <% content_for :page_title do %>
-Chat
+  Chat - Toronto Ruby
 <% end %>
+
 <% content_for :page_description do %>
-Join us on Slack!
+  Join the Toronto Ruby community on Slack and connect with local developers
 <% end %>

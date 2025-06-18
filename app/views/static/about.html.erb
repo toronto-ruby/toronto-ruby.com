@@ -1,18 +1,72 @@
-<main class="text-center p-3 max-w-screen-xl md:max-w-screen-md">
-  <div class="flex flex-col gap-6">
-    <div class="text-center">
-      <p>
-        Toronto Ruby is organized by <a class="underline text-ruby" href="https://crespire.dev/">Simmon Li</a>, <a class="underline text-ruby" href="https://georg.es/">Georges Gabereau</a> and <a class="underline text-ruby" href="https://www.linkedin.com/in/melanie-wang">Melanie Wang</a>.
-      </p>
-      <p>
-        Find us on <a class="underline text-ruby" href="https://github.com/toronto-ruby">Github</a>!
+<div class="py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h1 class="mb-4">About Toronto Ruby</h1>
+      <p class="text-xl text-gray-600">
+        We're passionate about building a thriving Ruby community in Toronto
       </p>
     </div>
+    
+    <div class="card p-8 mb-12">
+      <h2 class="text-2xl font-semibold mb-4">Our Mission</h2>
+      <p class="text-gray-600 mb-4">
+        Toronto Ruby is dedicated to creating an inclusive, welcoming space for Ruby developers of all skill levels. 
+        We believe in the power of community to help developers learn, grow, and build amazing things together.
+      </p>
+      <p class="text-gray-600">
+        Through regular meetups, workshops, and social events, we're working to strengthen connections within 
+        Toronto's tech community and showcase the vibrant Ruby ecosystem in our city.
+      </p>
+    </div>
+    
+    <div class="mb-12">
+      <h2 class="text-2xl font-semibold text-center mb-8">Meet the Organizers</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card p-6 text-center hover:shadow-xl transition-shadow">
+          <div class="w-24 h-24 bg-gradient-to-br from-ruby-400 to-ruby-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+            SL
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Simmon Li</h3>
+          <p class="text-sm text-gray-600 mb-3">Community Builder & Ruby Enthusiast</p>
+          <%= link_to "crespire.dev", "https://crespire.dev/", class: "text-ruby-500 hover:text-ruby-600 text-sm font-medium", target: "_blank", rel: "noopener" %>
+        </div>
+        
+        <div class="card p-6 text-center hover:shadow-xl transition-shadow">
+          <div class="w-24 h-24 bg-gradient-to-br from-ruby-400 to-ruby-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+            GG
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Georges Gabereau</h3>
+          <p class="text-sm text-gray-600 mb-3">Tech Lead & Open Source Contributor</p>
+          <%= link_to "georg.es", "https://georg.es/", class: "text-ruby-500 hover:text-ruby-600 text-sm font-medium", target: "_blank", rel: "noopener" %>
+        </div>
+        
+        <div class="card p-6 text-center hover:shadow-xl transition-shadow">
+          <div class="w-24 h-24 bg-gradient-to-br from-ruby-400 to-ruby-600 rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+            MW
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Melanie Wang</h3>
+          <p class="text-sm text-gray-600 mb-3">Developer & Community Advocate</p>
+          <%= link_to "LinkedIn", "https://www.linkedin.com/in/melanie-wang", class: "text-ruby-500 hover:text-ruby-600 text-sm font-medium", target: "_blank", rel: "noopener" %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center">
+      <p class="text-gray-600 mb-6">
+        Want to get involved or have questions?
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <%= link_to "Join us on GitHub", "https://github.com/toronto-ruby", class: "btn-secondary", target: "_blank", rel: "noopener" %>
+        <%= link_to "Contact Us", "mailto:info@toronto-ruby.com", class: "btn-primary" %>
+      </div>
+    </div>
   </div>
-</main>
+</div>
+
 <% content_for :page_title do %>
-About
+  About Toronto Ruby
 <% end %>
+
 <% content_for :page_description do %>
-About the organizers.
+  Learn about the organizers and mission behind Toronto Ruby
 <% end %>

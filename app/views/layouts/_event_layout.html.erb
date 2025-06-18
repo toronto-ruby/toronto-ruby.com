@@ -1,18 +1,42 @@
-<main class="text-center p-3 max-w-screen-xl md:max-w-screen-md">
-  <div class="flex flex-col gap-6">
-    <div class="text-center">
-      <h1>
-        Meetups for Toronto's Ruby community
+<div class="relative overflow-hidden">
+  <!-- Hero Section -->
+  <div class="relative py-16 sm:py-24">
+    <div class="absolute inset-0 bg-gradient-to-b from-ruby-50/50 to-transparent"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <!-- Large Logo -->
+      <div class="mb-8 animate-in">
+        <%= image_tag "logo-transparent.png", class: "h-48 md:h-48 lg:h-64 w-auto mx-auto", alt: "Toronto Ruby" %>
+      </div>
+      
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-up">
+        <span class="gradient-text">Meetups</span> for Toronto's<br class="hidden sm:block" />
+        Ruby community
       </h1>
-
-      <p>We're a group of Ruby developers who meet up to talk about programming, the industry, and life. We're working to strengthen the local Ruby community and provide a positive space for everyone to connect.</p>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed animate-up" style="animation-delay: 0.1s">
+        We're a group of Ruby developers who meet up to talk about programming, the industry, and life. 
+        We're working to strengthen the local Ruby community and provide a positive space for everyone to connect.
+      </p>
     </div>
-    <div class="text-center flex flex-col gap-3">
+  </div>
+
+  <!-- Events Section -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="space-y-8 animate-up" style="animation-delay: 0.2s">
       <%= yield(:event_content) %>
     </div>
-    <div class="mx-auto w-4/5 md:w-2/3">
-      <%= render 'layouts/newsletter_form' %>
+    
+    <!-- Newsletter Section -->
+    <div class="mt-16 max-w-3xl mx-auto">
+      <div class="card p-8 text-center">
+        <h3 class="mb-2">Stay in the loop</h3>
+        <p class="text-gray-600 mb-6">Get notified about upcoming meetups and Ruby community news</p>
+        <%= render 'layouts/newsletter_form' %>
+      </div>
     </div>
-    <%= render 'layouts/supporting_companies' %>
+    
+    <!-- Supporting Companies -->
+    <div class="mt-16">
+      <%= render 'layouts/supporting_companies' %>
+    </div>
   </div>
-</main>
+</div>

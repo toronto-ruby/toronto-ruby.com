@@ -1,43 +1,136 @@
 <%= form_with(model: [:admin, event]) do |form| %>
   <% if event.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(event.errors.count, "error") %>
-        prohibited this event from being saved:</h2>
-
-      <ul>
-        <% event.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="rounded-lg bg-red-50 p-4 mb-6">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-red-800">
+            <%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:
+          </h3>
+          <div class="mt-2 text-sm text-red-700">
+            <ul class="list-disc list-inside space-y-1">
+              <% event.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 
-  <div class='flex flex-col'>
-    <%= form.label :name %>
-    <%= form.text_field :name, required: true %>
-    <%= form.label :location %>
-    <%= form.rich_text_area :location, required: true %>
-    <%= form.label :rsvp_link %>
-    <%= form.text_field :rsvp_link, required: true %>
-    <%= form.label :description %>
-    <%= form.rich_text_area :description %>
-    <%= form.label :sponsor %>
-    <%= form.text_field :sponsor %>
-    <%= form.label :sponsor_link %>
-    <%= form.text_field :sponsor_link %>
-    <%= form.label :sponsor_logo %>
-    <%= form.text_field :sponsor_logo %>
-    <%= form.label :start_at %>
-    <%= form.datetime_field :start_at,
-                        include_seconds: false,
-                        value:
-                          event
-                            &.start_at
-                            &.in_time_zone("Eastern Time (US & Canada)")
-                            .presence ||
-                            Time.zone.now.in_time_zone("Eastern Time (US & Canada)") %>
-    <%= form.label :status %>
-    <%= form.select :status, options_for_select(Event.statuses_for_select, event.status) %>
-    <%= form.submit %>
+  <div class="space-y-6">
+    <!-- Basic Information -->
+    <div class="card p-6">
+      <h3 class="text-lg font-semibold mb-4">Basic Information</h3>
+      
+      <div class="space-y-4">
+        <div>
+          <%= form.label :name, class: "block text-sm font-medium text-gray-700 mb-1" %>
+          <%= form.text_field :name, required: true, class: "block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-ruby-500 focus:ring-1 focus:ring-ruby-500 transition-colors" %>
+        </div>
+        
+        <div>
+          <%= form.label :start_at, class: "block text-sm font-medium text-gray-700 mb-1" %>
+          <%= form.datetime_field :start_at,
+                              include_seconds: false,
+                              value: event&.start_at&.in_time_zone("Eastern Time (US & Canada)").presence || Time.zone.now.in_time_zone("Eastern Time (US & Canada)"),
+                              class: "block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-ruby-500 focus:ring-1 focus:ring-ruby-500 transition-colors" %>
+          <p class="mt-1 text-sm text-gray-500">Eastern Time (US & Canada)</p>
+        </div>
+        
+        <div>
+          <%= form.label :status, class: "block text-sm font-medium text-gray-700 mb-1" %>
+          <%= form.select :status, 
+                          options_for_select(Event.statuses_for_select, event.status), 
+                          {},
+                          class: "block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-ruby-500 focus:ring-1 focus:ring-ruby-500 transition-colors" %>
+        </div>
+        
+        <div>
+          <%= form.label :rsvp_link, "RSVP Link", class: "block text-sm font-medium text-gray-700 mb-1" %>
+          <%= form.text_field :rsvp_link, required: true, placeholder: "https://...", class: "block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-ruby-500 focus:ring-1 focus:ring-ruby-500 transition-colors placeholder-gray-400" %>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Content -->
+    <div class="card p-6">
+      <h3 class="text-lg font-semibold mb-4">Event Details</h3>
+      
+      <div class="space-y-4">
+        <div>
+          <%= form.label :location, class: "block text-sm font-medium text-gray-700 mb-1" %>
+          <div class="prose-editor">
+            <%= form.rich_text_area :location, required: true, class: "block w-full" %>
+          </div>
+        </div>
+        
+        <div>
+          <%= form.label :description, "Agenda", class: "block text-sm font-medium text-gray-700 mb-1" %>
+          <div class="prose-editor">
+            <%= form.rich_text_area :description, class: "block w-full" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Sponsor Information -->
+    <div class="card p-6">
+      <h3 class="text-lg font-semibold mb-4">Sponsor Information</h3>
+      <p class="text-sm text-gray-600 mb-4">Optional: Add sponsor details if this event has a sponsor</p>
+      
+      <div class="space-y-4">
+        <div>
+          <%= form.label :sponsor, "Sponsor Name", class: "block text-sm font-medium text-gray-700 mb-1" %>
+          <%= form.text_field :sponsor, class: "block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-ruby-500 focus:ring-1 focus:ring-ruby-500 transition-colors" %>
+        </div>
+        
+        <div>
+          <%= form.label :sponsor_link, "Sponsor Website", class: "block text-sm font-medium text-gray-700 mb-1" %>
+          <%= form.text_field :sponsor_link, placeholder: "https://...", class: "block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-ruby-500 focus:ring-1 focus:ring-ruby-500 transition-colors placeholder-gray-400" %>
+        </div>
+        
+        <div>
+          <%= form.label :sponsor_logo, "Logo Filename", class: "block text-sm font-medium text-gray-700 mb-1" %>
+          <%= form.text_field :sponsor_logo, placeholder: "company.png", class: "block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm focus:border-ruby-500 focus:ring-1 focus:ring-ruby-500 transition-colors placeholder-gray-400" %>
+          <p class="mt-1 text-sm text-gray-500">Logo should be placed in app/assets/images/sponsors/</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Form Actions -->
+    <div class="flex items-center justify-end gap-4 pt-6">
+      <%= link_to "Cancel", admin_events_path, class: "btn-secondary" %>
+      <%= form.submit class: "btn-primary" %>
+    </div>
   </div>
 <% end %>
+
+<style>
+  /* Rich text editor styling */
+  .prose-editor {
+    @apply rounded-lg border border-gray-300 overflow-hidden shadow-sm;
+  }
+  
+  .prose-editor:focus-within {
+    @apply ring-1 ring-ruby-500 border-ruby-500;
+  }
+  
+  .prose-editor trix-editor {
+    @apply min-h-[150px] px-4 py-3;
+  }
+  
+  .prose-editor trix-toolbar {
+    @apply border-b border-gray-200 px-2;
+  }
+  
+  /* Ensure trix editor has consistent padding */
+  .prose-editor trix-editor:empty:not(:focus)::before {
+    @apply text-gray-400;
+  }
+</style>

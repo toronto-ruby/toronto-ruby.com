@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -13,9 +13,23 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="bg-beige flex flex-col items-center justify-center">
-    <%= render "layouts/common/navigation" %>
-    <%= render "layouts/common/flash" %>
-    <%= yield %>
+  <body class="min-h-screen bg-gradient-to-br from-cream via-white to-ruby-50">
+    <div class="min-h-screen flex flex-col">
+      <%= render "layouts/common/navigation" %>
+      <%= render "layouts/common/flash" %>
+      <main class="flex-grow animate-in">
+        <%= yield %>
+      </main>
+      <footer class="mt-auto py-8 px-4 text-center text-sm text-gray-600 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto">
+          <p>&copy; <%= Date.current.year %> Toronto Ruby. Built with <span class="text-ruby-500">❤️</span> in Toronto.</p>
+          <div class="mt-2 flex justify-center gap-4">
+            <%= link_to "Code of Conduct", code_of_conduct_path, class: "hover:text-ruby-500" %>
+            <%= link_to "About", about_path, class: "hover:text-ruby-500" %>
+            <%= link_to "Contact", "mailto:info@toronto-ruby.com", class: "hover:text-ruby-500" %>
+          </div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

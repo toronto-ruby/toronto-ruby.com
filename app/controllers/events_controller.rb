@@ -22,7 +22,6 @@ class EventsController < ApplicationController
 
   def past
     @events = Event.with_all_rich_text.past
-    render :index
   end
 
   def next
