@@ -1,7 +1,0 @@
-<% content_for :page_title do %>
-  <%== @event.name %>
-<% end %>
-
-<%= content_for :event_content do %>
-  <%= render partial: "events/event", locals: { event: @event } %>
-<% end %>
