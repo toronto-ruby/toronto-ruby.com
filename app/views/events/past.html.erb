@@ -1,0 +1,87 @@
+<div class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-6">
+        <svg class="w-10 h-10 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+      </div>
+      <h1 class="mb-4">Past Events</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Explore our archive of previous Toronto Ruby meetups. 
+        Each event brought our community together to learn, share, and grow.
+      </p>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="card p-6 text-center">
+        <div class="text-3xl font-bold text-ruby-500 mb-2"><%= @events.count %></div>
+        <div class="text-sm text-gray-600">Total Events</div>
+      </div>
+      <div class="card p-6 text-center">
+        <div class="text-3xl font-bold text-ruby-500 mb-2">
+          <%= @events.select { |e| e.start_at.year == Date.current.year }.count %>
+        </div>
+        <div class="text-sm text-gray-600">Events This Year</div>
+      </div>
+      <div class="card p-6 text-center">
+        <div class="text-3xl font-bold text-ruby-500 mb-2">
+          <%= @events.map { |e| e.start_at.year }.uniq.count %>
+        </div>
+        <div class="text-sm text-gray-600">Years Active</div>
+      </div>
+    </div>
+
+    <!-- Events Timeline -->
+    <div class="space-y-8">
+      <% if @events.any? %>
+        <% @events.group_by { |event| event.start_at.year }.sort.reverse.each do |year, year_events| %>
+          <div class="animate-up">
+            <!-- Year Header -->
+            <div class="flex items-center mb-6">
+              <div class="flex-grow border-t border-gray-300"></div>
+              <span class="px-4 text-lg font-semibold text-gray-700 bg-white"><%= year %></span>
+              <div class="flex-grow border-t border-gray-300"></div>
+            </div>
+            
+            <!-- Events for this year -->
+            <div class="space-y-8">
+              <% year_events.sort_by(&:start_at).reverse.each do |event| %>
+                <%= render partial: "events/event", locals: { event: event } %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="text-center py-12">
+          <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <h3 class="mt-2 text-sm font-medium text-gray-900">No past events</h3>
+          <p class="mt-1 text-sm text-gray-500">Check back after our first meetup!</p>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="mt-16 text-center">
+      <div class="card p-8 bg-gradient-to-br from-ruby-50 to-white">
+        <h3 class="text-2xl font-semibold mb-4">Don't Miss Our Next Event</h3>
+        <p class="text-gray-600 mb-6">
+          Join our newsletter to get notified about upcoming Toronto Ruby meetups
+        </p>
+        <%= link_to "View Upcoming Events", root_path, class: "btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :page_title do %>
+  Past Events - Toronto Ruby
+<% end %>
+
+<% content_for :page_description do %>
+  Browse the archive of past Toronto Ruby meetups and community events
+<% end %> 

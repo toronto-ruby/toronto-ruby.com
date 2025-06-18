@@ -1,14 +1,18 @@
-<div class="mx-auto text-center">
-  <h3>Supporting Companies</h3>
-  <div class="flex justify-center gap-3 items-center">
-    <%= link_to 'https://clio.com' do %>
-      <%= image_tag "sponsors/clio.png", class: "max-h-20 px-4" %>
+<div class="text-center">
+  <h3 class="text-2xl font-semibold mb-8">Supporting Companies</h3>
+  <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+    <%= link_to 'https://clio.com', class: 'group grayscale hover:grayscale-0 transition-all duration-300', target: '_blank', rel: 'noopener' do %>
+      <%= image_tag "sponsors/clio.png", class: "h-16 md:h-20 w-auto opacity-60 group-hover:opacity-100 transition-opacity", alt: "Clio" %>
     <% end %>
-    <%= link_to 'https://shopify.com' do %>
-      <%= image_tag "sponsors/shopify.png", class: "max-h-16" %>
+    <%= link_to 'https://shopify.com', class: 'group grayscale hover:grayscale-0 transition-all duration-300', target: '_blank', rel: 'noopener' do %>
+      <%= image_tag "sponsors/shopify.png", class: "h-12 md:h-16 w-auto opacity-60 group-hover:opacity-100 transition-opacity", alt: "Shopify" %>
     <% end %>
-    <%= link_to 'https://switchgrowth.com' do %>
-      <%= image_tag "sponsors/switch.png", class: "max-h-20" %>
+    <%= link_to 'https://switchgrowth.com', class: 'group grayscale hover:grayscale-0 transition-all duration-300', target: '_blank', rel: 'noopener' do %>
+      <%= image_tag "sponsors/switch.png", class: "h-16 md:h-20 w-auto opacity-60 group-hover:opacity-100 transition-opacity", alt: "Switch" %>
     <% end %>
   </div>
+  <p class="mt-6 text-sm text-gray-600">
+    Interested in supporting Toronto Ruby? 
+    <%= link_to "Get in touch", "mailto:info@toronto-ruby.com", class: "text-ruby-500 hover:text-ruby-600 font-medium" %>
+  </p>
 </div>
