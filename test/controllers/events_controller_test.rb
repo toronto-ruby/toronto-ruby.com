@@ -52,4 +52,11 @@ class EventsControllerTest < ActionController::TestCase
 
     assert_equal 0, events.count
   end
+
+  test 'should redirect to events page if event is not found' do
+    get :show, params: { slug: 'nonexistent-event' }
+
+    assert_response :found
+    assert_redirected_to all_events_path
+  end
 end
