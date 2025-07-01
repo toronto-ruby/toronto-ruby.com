@@ -1,50 +1,93 @@
 <div id="<%= dom_id event %>" class="card group">
   <% future = Time.zone.now < event.start_at %>
-  
+
   <div class="p-8">
     <!-- Event Header -->
-    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
+    <div
+      class="
+        flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8
+      "
+    >
       <div>
         <h2 class="mb-3">
-          <%= event.name %>
+          <%= link_to event.name, event_path(event) %>
         </h2>
         <div class="flex flex-wrap items-center gap-4 text-sm">
           <div class="flex items-center gap-2 text-gray-600">
-            <svg class="w-5 h-5 text-ruby-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            <svg
+              class="w-5 h-5 text-ruby-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              ></path>
             </svg>
             <span class="font-medium"><%= event.start_time %></span>
           </div>
           <% if future %>
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
+            <span
+              class="
+                inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100
+                text-green-800
+              "
+            >
               Upcoming
             </span>
           <% else %>
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+            <span
+              class="
+                inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100
+                text-gray-800
+              "
+            >
               Past Event
             </span>
           <% end %>
         </div>
       </div>
-      
+
       <% if future %>
         <%= link_to event.rsvp_link, class: "btn-primary", target: "_blank", rel: "noopener" do %>
           Join the event
           <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            ></path>
           </svg>
         <% end %>
       <% end %>
     </div>
-    
     <!-- Event Content Grid -->
     <div class="grid md:grid-cols-2 gap-8">
       <!-- Location -->
       <div>
         <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
-          <svg class="w-5 h-5 text-ruby-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          <svg
+            class="w-5 h-5 text-ruby-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+            ></path>
           </svg>
           Location
         </h3>
@@ -52,12 +95,21 @@
           <%= event.location %>
         </div>
       </div>
-      
       <!-- Agenda -->
       <div>
         <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
-          <svg class="w-5 h-5 text-ruby-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+          <svg
+            class="w-5 h-5 text-ruby-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+            ></path>
           </svg>
           Agenda
         </h3>
@@ -68,7 +120,6 @@
         </div>
       </div>
     </div>
-    
     <!-- Sponsor Section -->
     <% if event.sponsor %>
       <div class="mt-8 pt-8 border-t border-gray-100">
@@ -76,14 +127,32 @@
           <h3 class="text-lg font-semibold">Event Sponsor</h3>
           <%= link_to event.sponsor_link, class: "group flex items-center gap-4 hover:opacity-80 transition-opacity", target: "_blank", rel: "noopener" do %>
             <% if event.sponsor_logo.present? %>
-              <%= image_tag "sponsors/#{event.sponsor_logo}", class: "max-h-16 max-w-[200px] object-contain", alt: event.sponsor %>
+              <%= image_tag "sponsors/#{event.sponsor_logo}",
+              class: "max-h-16 max-w-[200px] object-contain",
+              alt: event.sponsor %>
             <% else %>
-              <span class="text-lg font-medium text-gray-700 group-hover:text-ruby-500 transition-colors">
+              <span
+                class="
+                  text-lg font-medium text-gray-700 group-hover:text-ruby-500 transition-colors
+                "
+              >
                 <%= event.sponsor.titleize %>
               </span>
             <% end %>
-            <svg class="w-5 h-5 text-gray-400 group-hover:text-ruby-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            <svg
+              class="
+                w-5 h-5 text-gray-400 group-hover:text-ruby-500 transition-colors
+              "
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              ></path>
             </svg>
           <% end %>
         </div>
