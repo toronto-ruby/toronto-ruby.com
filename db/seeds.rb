@@ -9,6 +9,41 @@
 #   end
 #
 zone = 'Eastern Time (US & Canada)'
+sponsors = [
+  {
+    name: 'Switch',
+    logo: 'switch.png',
+    link: 'https://switchgrowth.com'
+  },
+  {
+    name: 'Shopify',
+    logo: 'shopify.png',
+    link: 'https://shopify.com'
+  },
+  {
+    name: 'Clio',
+    logo: 'clio.png',
+    link: 'https://clio.com'
+  }
+]
+
+15.times do
+  sponsor = sponsors.sample
+  before_after = rand(10) > 5
+  now = Time.now.utc
+  time = before_after ? now + rand(7).days : now - rand(7).days
+  Event.create(
+    name: SecureRandom.hex(8),
+    location: "Location #{SecureRandom.hex(8)}",
+    description: "Description #{SecureRandom.hex(8)}",
+    sponsor: sponsor[:name],
+    sponsor_logo: sponsor[:logo],
+    sponsor_link: sponsor[:link],
+    status: :published,
+    start_at: time
+  )
+end
+
 events = [
   {
     name: 'Inaugural Edition',
