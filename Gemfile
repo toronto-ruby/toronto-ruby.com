@@ -47,7 +47,7 @@ gem 'bootsnap', require: false
 gem 'image_processing', '~> 1.2'
 
 # Internet calendaring, Ruby style
-gem 'icalendar', '~> 2.10'
+gem 'icalendar', '~> 2.12'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
