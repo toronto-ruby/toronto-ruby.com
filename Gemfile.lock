@@ -274,7 +274,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   honeybadger (~> 5.6)
-  icalendar (~> 2.10)
+  icalendar (~> 2.12)
   image_processing (~> 1.2)
   jbuilder
   jsbundling-rails
