@@ -1,6 +1,7 @@
 # syntax = docker/dockerfile:1
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
+# Source of truth for Ruby is .ruby-version. The CI "check-versions" action
+# enforces that this ARG default stays aligned with it.
 ARG RUBY_VERSION=4.0.3
 FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim AS base
 
@@ -21,12 +22,13 @@ FROM base AS build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential curl git libpq-dev libvips node-gyp pkg-config python-is-python3
 
-# Install JavaScript dependencies
-ARG NODE_VERSION=24.15.0
+# Install JavaScript dependencies — Node version is read from .node-version
+COPY .node-version /tmp/.node-version
 ENV PATH=/usr/local/node/bin:$PATH
-RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
+RUN NODE_VERSION="$(tr -d '[:space:]' < /tmp/.node-version)" && \
+    curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
     /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
-    rm -rf /tmp/node-build-master
+    rm -rf /tmp/node-build-master /tmp/.node-version
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./

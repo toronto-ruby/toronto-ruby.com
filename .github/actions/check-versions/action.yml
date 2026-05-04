@@ -1,0 +1,37 @@
+name: 'Check version alignment'
+description: 'Verify Ruby and Node versions agree across .ruby-version, .node-version, .tool-versions, and Dockerfile'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Verify language version alignment
+      shell: bash
+      run: |
+        set -eu
+
+        ruby_version=$(tr -d '[:space:]' < .ruby-version)
+        node_version=$(tr -d '[:space:]' < .node-version)
+
+        tool_ruby=$(awk '/^ruby[[:space:]]/ {print $2}' .tool-versions)
+        tool_node=$(awk '/^nodejs[[:space:]]/ {print $2}' .tool-versions)
+
+        dockerfile_ruby=$(awk -F= '/^ARG RUBY_VERSION=/ {print $2}' Dockerfile)
+
+        fail=0
+        check() {
+          if [ "$2" != "$3" ]; then
+            echo "::error::$1 mismatch: expected '$2', got '$3'"
+            fail=1
+          fi
+        }
+
+        check ".tool-versions ruby vs .ruby-version"         "$ruby_version" "$tool_ruby"
+        check "Dockerfile ARG RUBY_VERSION vs .ruby-version" "$ruby_version" "$dockerfile_ruby"
+        check ".tool-versions nodejs vs .node-version"       "$node_version" "$tool_node"
+
+        if [ $fail -ne 0 ]; then
+          echo "Version alignment failed. Source of truth: .ruby-version and .node-version." >&2
+          exit 1
+        fi
+
+        echo "Versions aligned: ruby=$ruby_version, node=$node_version"

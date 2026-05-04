@@ -32,6 +32,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check version alignment
+        uses: ./.github/actions/check-versions
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
