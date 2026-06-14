@@ -7,7 +7,7 @@
     "@rails/actiontext": "^7.2.100",
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.16",
-    "esbuild": "^0.25.0",
+    "esbuild": "^0.28.1",
     "postcss": "^8.5.10",
     "trix": "^2.1.18"
   },
