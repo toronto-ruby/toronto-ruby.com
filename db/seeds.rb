@@ -121,5 +121,10 @@ events.each do |event|
   e.save!
 end
 
-Rails.application.load_tasks
-Rake::Task['admins:sync'].invoke
+admins = Rails.application.credentials.admins ||
+         (Rails.env.production? ? raise('admins missing from credentials') : [{ username: 'trbadmin', password: 'admin' }])
+admins.each do |attrs|
+  user = User.find_or_initialize_by(username: attrs[:username])
+  user.password = attrs[:password]
+  user.save!
+end
