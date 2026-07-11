@@ -21,6 +21,9 @@
         <% end %>
         <%= link_to "Chat", chat_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors" %>
         <%= link_to "Past Events", past_events_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors" %>
+        <% if signed_in? %>
+          <%= button_to "Sign out", logout_path, method: :delete, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors bg-transparent border-0 p-0 cursor-pointer" %>
+        <% end %>
       </nav>
       
       <!-- Mobile menu button -->
@@ -47,6 +50,9 @@
         <% end %>
         <%= link_to "Chat", chat_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-ruby-50" %>
         <%= link_to "Past Events", past_events_path, class: "text-gray-700 hover:text-ruby-500 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-ruby-50" %>
+        <% if signed_in? %>
+          <%= button_to "Sign out", logout_path, method: :delete, class: "text-left text-gray-700 hover:text-ruby-500 font-medium transition-colors px-3 py-2 rounded-lg hover:bg-ruby-50 bg-transparent border-0 cursor-pointer w-full" %>
+        <% end %>
       </div>
     </div>
   </div>
