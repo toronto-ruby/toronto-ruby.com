@@ -52,4 +52,11 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions.
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Static Active Record encryption keys for the test suite. Production keys
+  # live in encrypted credentials; test data is throwaway and CI doesn't have
+  # (nor should it need) the master key.
+  config.active_record.encryption.primary_key = 'test_primary_key_not_for_production_use_1234'
+  config.active_record.encryption.deterministic_key = 'test_deterministic_key_not_for_production_1234'
+  config.active_record.encryption.key_derivation_salt = 'test_key_derivation_salt_not_for_production_1234'
 end
