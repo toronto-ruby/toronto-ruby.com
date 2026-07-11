@@ -25,6 +25,17 @@ The database and storage configurations are provided in a `.sample` file, make s
 
 This should get the application setup and ready to run.
 
+### Admin authentication
+Admin access (creating/editing events) is gated behind a login screen backed by a `User` model with `has_secure_password`. Admin users are seeded from the encrypted credentials under the `admins:` key — add or update entries there and re-run `bin/rails db:seed` to upsert. The credentials file also holds the `active_record_encryption` keys used to encrypt `password_digest` and `session_token` at rest. To rotate or add admins:
+
+```
+bin/rails credentials:edit
+# then:
+bin/rails db:seed
+```
+
+The default seeded admin is `trbadmin`.
+
 To run the application locally, in two separate consoles:
 1. Run `bin/dev` - watches and rebuilds JS and CSS (runs `Procfile.dev` via foreman)
 1. Run `bin/rails s` - starts the Rails server
