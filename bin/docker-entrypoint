@@ -1,8 +1,11 @@
 #!/bin/bash -e
 
-# If running the rails server then create or migrate existing database
+# If running the rails server then create or migrate existing database,
+# then upsert admins from encrypted credentials. admins:sync is idempotent
+# (find_or_initialize_by on username) and does not touch event fixtures.
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
   ./bin/rails db:prepare
+  ./bin/rails admins:sync
 fi
 
 exec "${@}"

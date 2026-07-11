@@ -120,3 +120,6 @@ events.each do |event|
   e.description = event[:description]
   e.save!
 end
+
+Rails.application.load_tasks
+Rake::Task['admins:sync'].invoke

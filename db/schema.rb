@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_05_05_011213) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_11_022932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -65,6 +65,16 @@ ActiveRecord::Schema[8.0].define(version: 2026_05_05_011213) do
     t.string "city", default: "Toronto, Canada", null: false
     t.virtual "slug", type: :string, null: false, as: "lower(regexp_replace(regexp_replace((name)::text, ' +'::text, '-'::text, 'g'::text), '[^a-zA-Z0-9-]'::text, ''::text, 'g'::text))", stored: true
     t.index ["slug"], name: "index_events_on_slug", unique: true
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "password_digest", null: false
+    t.string "session_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_token"], name: "index_users_on_session_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
