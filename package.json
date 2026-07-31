@@ -8,7 +8,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.16",
     "esbuild": "^0.28.1",
-    "postcss": "^8.5.10",
+    "postcss": "^8.5.25",
     "trix": "^2.1.18"
   },
   "scripts": {
