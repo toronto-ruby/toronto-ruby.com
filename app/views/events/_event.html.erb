@@ -1,5 +1,5 @@
 <div id="<%= dom_id event %>" class="card group">
-  <% future = Time.zone.now < event.start_at %>
+  <% future = !event.over? %>
 
   <div class="p-8">
     <!-- Event Header -->
@@ -94,6 +94,13 @@
         <div class="prose prose-sm text-gray-600">
           <%= event.location %>
         </div>
+        <% if event.map_url %>
+          <%= link_to "Open in Google Maps",
+                      event.map_url,
+                      class: "external-link mt-2 text-sm",
+                      target: "_blank",
+                      rel: "noopener" %>
+        <% end %>
       </div>
       <!-- Agenda -->
       <div>

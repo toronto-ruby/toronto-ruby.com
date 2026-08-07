@@ -17,7 +17,7 @@ class Calendar
     @events.each do |event|
       calendar.event do |e|
         e.dtstart     = ical_time(event.start_at)
-        e.dtend       = ical_time(event.start_at + 3.hours)
+        e.dtend       = ical_time(event.end_at)
         e.summary     = "Toronto Ruby - #{event.name}"
         e.location    = event.city
         e.url         = event.rsvp_link || event_url(event)
