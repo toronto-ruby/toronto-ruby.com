@@ -14,7 +14,7 @@ class Event < ApplicationRecord
   has_rich_text :location
 
   def start_time
-    start_at.in_time_zone('Eastern Time (US & Canada)').to_fs(:long_at)
+    start_at.to_fs(:long_at)
   end
 
   def end_at
