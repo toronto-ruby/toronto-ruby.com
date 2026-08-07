@@ -59,4 +59,58 @@ class EventsControllerTest < ActionController::TestCase
     assert_response :found
     assert_redirected_to all_events_path
   end
+
+  test 'links the location to Google Maps' do
+    event = @events.first
+    event.update!(location: "Workplace One\n51 Wolseley St, Toronto ON")
+
+    get :show, params: { slug: event.slug }
+
+    assert_response :success
+    assert_match 'https://www.google.com/maps/search/?api=1&amp;query=Workplace+One%2C+51+Wolseley+St%2C+Toronto+ON',
+                 response.body
+    assert_match 'Open in Google Maps', response.body
+  end
+
+  test 'an event still in progress stays on the home page' do
+    create_only_event('In Progress Event', Time.zone.now - 1.hour)
+
+    get :index
+    assert_response :success
+    assert_match 'In Progress Event', response.body
+    assert_match 'Upcoming', response.body
+
+    get :past
+    assert_response :success
+    assert_match 'No past events', response.body
+  end
+
+  test 'an event that has ended moves to past events' do
+    create_only_event('Finished Event', Time.zone.now - (Event::DURATION + 1.minute))
+
+    get :index
+    assert_response :success
+    assert_match "We're planning our next outing", response.body
+
+    get :past
+    assert_response :success
+    assert_match 'Finished Event', response.body
+    assert_match 'Past Event', response.body
+  end
+
+  private
+
+  def create_only_event(name, start_at)
+    Event.destroy_all
+    Event.create!(
+      start_at: start_at,
+      name: name,
+      location: 'Some Office',
+      description: 'A talk',
+      status: :published,
+      rsvp_link: 'https://example.com/rsvp',
+      sponsor: 'Some Sponsor',
+      sponsor_link: 'https://example.com'
+    )
+  end
 end

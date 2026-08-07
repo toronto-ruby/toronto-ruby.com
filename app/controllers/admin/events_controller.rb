@@ -1,6 +1,5 @@
 module Admin
   class EventsController < BaseController
-    TZ_STRING = 'Eastern Time (US & Canada)'
     before_action :set_event, only: %i[show edit update destroy]
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -21,7 +20,6 @@ module Admin
     # POST /events or /events.json
     def create
       @event = Event.new(event_params)
-      @event.start_at = @event.start_at.change(zone: TZ_STRING)
 
       respond_to do |format|
         if @event.save
@@ -37,7 +35,6 @@ module Admin
     # PATCH/PUT /events/1 or /events/1.json
     def update
       @event.assign_attributes(event_params)
-      @event.start_at = @event.start_at.change(zone: TZ_STRING)
 
       respond_to do |format|
         if @event.save

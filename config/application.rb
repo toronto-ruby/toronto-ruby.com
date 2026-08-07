@@ -33,7 +33,8 @@ module SiteV2
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    # Every meetup is in Toronto, so render times there. Storage stays UTC.
+    config.time_zone = 'Eastern Time (US & Canada)'
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.

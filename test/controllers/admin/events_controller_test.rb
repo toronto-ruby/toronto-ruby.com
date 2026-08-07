@@ -38,6 +38,27 @@ class Admin::EventsControllerTest < ActionDispatch::IntegrationTest
     assert response.body.include?(Event.last.name)
   end
 
+  test 'index shows event times in Toronto time, not UTC' do
+    Event.destroy_all
+    # 00:30 UTC is the previous evening in Toronto.
+    Event.create!(
+      start_at: Time.utc(2024, 11, 26, 0, 30),
+      name: 'Late Night Edition',
+      location: 'Some Office',
+      description: 'A talk',
+      status: :published,
+      sponsor: 'Some Sponsor',
+      sponsor_link: 'https://example.com'
+    )
+
+    get admin_events_path
+
+    assert_response :success
+    assert_match 'November 25, 2024', response.body
+    assert_match '7:30 PM', response.body
+    assert_no_match(/November 26, 2024/, response.body)
+  end
+
   test 'should show a single event' do
     get admin_event_path(Event.first.slug)
 
